@@ -1,0 +1,69 @@
+<!-- Main page used to display investor's stocks and bonds in two tables.  -->
+
+{% extends "stocks_app/base.html" %}
+
+{% block content %}
+<br/>
+<h2>Stock ownership for {{investor.first_name}} {{investor.last_name}}</h2>
+
+<table style="width:75%" border=1>
+	<tr>
+		<th>Stock</th>
+		<th>Shares</th>
+		<th>Purchase Price ($)</th>
+		<th>Current Price ($)</th>
+		<th>Purchase Date</th>
+
+	</tr>
+	
+	{% for stock in stocks %}
+		<tr>
+			<td>{{stock.company_stock_symbol}}</td>
+			<td>{{stock.number_of_stocks_owned}}</td>
+			<td>{{stock.purchase_price}}</td>
+			<td>{{stock.current_price}}</td>
+			<td>{{stock.purchase_date}}</td>
+		</tr>
+		
+	{% empty %}
+	<p>No stocks found</p>
+	{% endfor %}
+</table>
+
+<br/>
+<p><a href="{% url 'stocks_app:stock_form' %}">Add a New Stock</a></p>
+
+<br/>
+<h2>Bond ownership for {{investor.first_name}} {{investor.last_name}}</h2>
+
+<table style="width:85%" border=1>
+	<tr>
+		<th>Bonds</th>
+		<th>Shares</th>
+		<th>Purchase Price ($)</th>
+		<th>Current Price ($)</th>
+		<th>Purchase Date</th>
+		<th>Bond Coupon</th>
+		<th>Bond Yield</th>
+
+
+	</tr>
+		{% for bond in bonds %}	
+		<tr>
+			<td>{{bond.company_stock_symbol}}</td>
+			<td>{{bond.number_of_stocks_owned}}</td>
+			<td>{{bond.purchase_price}}</td>
+			<td>{{bond.current_price}}</td>
+			<td>{{bond.purchase_date}}</td>
+			<td>{{bond.bond_coupon}}</td>
+			<td>{{bond.bond_yield}}</td>
+		</tr>
+	{% empty %}	
+	<p>No bonds found</p>
+	{% endfor %}
+</table>
+
+<br/>
+<p><a href="{% url 'stocks_app:bond_form' %}">Add a New Bond</a></p>
+
+{% endblock content %}

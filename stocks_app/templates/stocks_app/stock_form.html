@@ -1,0 +1,22 @@
+<!-- Stock Form page, which has a form to add new stock information to user's database.  -->
+
+{% extends "stocks_app/base.html" %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+<br/>
+<h2>Enter New Stocks:</h2>
+
+{% if error_message %}
+	<p>{{ error_message }}</p>
+{% endif %}
+<div class="form-group" size='small' >
+<form action="{% url 'stocks_app:index' %}" method='POST'>
+	{% csrf_token %}
+	{% bootstrap_form form %}
+	<button type='submit' name='save' class="btn btn-primary">Add Stock</button>
+</form>
+</div>
+
+{% endblock content %}

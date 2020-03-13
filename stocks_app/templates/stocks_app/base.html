@@ -1,1 +1,40 @@
+<!-- Base page used to define HTML document, create head tags (including meta data, title, and bootstratp css and js links), and navigation. This page is extended to all three pages for consistancy.  -->
 
+{% load bootstrap3 %}
+
+<!DOCTYPE html>
+<html lang="en">
+	
+<head>
+  	<meta charset="utf-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  	<title>Stock App</title>
+	
+	<!-- include bootstrap css and js -->
+	{% bootstrap_css %}
+	{% bootstrap_javascript %}
+</head>
+
+<body style="padding:10px;" >
+	<nav class="navbar navbar-default">
+		<div class="container navbar-nav" id="navbar">
+			<ul class="nav navbar-nav">	
+				<li class="nav-item">
+					<a class="navbar-brand nav-link" href="{% url 'stocks_app:index' %}">Investor Tracking</a>  
+				</li>
+				<li class="nav-item">
+					<a class="navbar-brand nav-link" href="{% url 'stocks_app:stock_form' %}">Stock Form</a> 
+				</li>
+				<li class="nav-item">
+					<a class="navbar-brand nav-link" href="{% url 'stocks_app:bond_form' %}">Bond Form</a>
+				</li>
+			</ul>	
+		</div>		
+	</nav>
+
+<h1>Tracking Investor Stocks and Bonds</h1>
+
+{% block content %}{% endblock content %}
+</body>
+</html>
